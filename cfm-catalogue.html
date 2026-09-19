@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Fellowship Makerere — Medical Wear</title>
+
+<meta property="og:title" content="Christian Fellowship Makerere Catalog">
+<meta property="og:description" content="Explore our products and catalog.">
+<meta property="og:image" content="cfm.jpg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================================
+   1. COLOUR + TYPE TOKENS  —  change the hex values here to re-skin
+   ===================================================================== */
+:root{
+  --ink:#0F1A17;
+  --pine:#1E5A4E;
+  --pine-deep:#124037;
+  --brass:#A97B1F;
+  --mist:#E7EEEA;
+  --paper:#FBFCFB;
+  --surface:#FFFFFF;
+  --line:#D4E0DA;
+  --muted:#5C6B66;
+  --danger:#8C2F2F;
+
+  --bg:var(--paper);
+  --fg:var(--ink);
+  --card:var(--surface);
+  --radius:14px;
+  --maxw:1180px;
+  --shadow:0 1px 2px rgba(15,26,23,.06), 0 12px 28px -18px rgba(15,26,23,.35);
+
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+/* Dark mode: neutral charcoal, warm amber accent — no green tint */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#EDEBE6; --pine:#E3A94A; --pine-deep:#1C1C20; --brass:#E3A94A;
+    --mist:#1D1D22; --paper:#121215; --surface:#191920; --line:#30303A; --muted:#9C9CA6;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 30px -18px rgba(0,0,0,.85);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#EDEBE6; --pine:#E3A94A; --pine-deep:#1C1C20; --brass:#E3A94A;
+  --mist:#1D1D22; --paper:#121215; --surface:#191920; --line:#30303A; --muted:#9C9CA6;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 30px -18px rgba(0,0,0,.85);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+button,input,select,textarea{font:inherit; color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass); outline-offset:2px; border-radius:4px}
+.wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============================ HEADER ============================ */
+header.site{
+  position:sticky; top:0; z-index:40;
+  background:color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex; align-items:center; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; min-width:0}
+
+/* --- LOGO BOX: the image you drop in is sized by this box --- */
+.logo-box{
+  width:52px; height:52px; flex:0 0 52px; border-radius:12px; overflow:hidden;
+  background:var(--pine-deep); display:grid; place-items:center;
+  border:1px solid var(--line);
+}
+.logo-box img{width:100%; height:100%; object-fit:cover}
+.logo-box .fallback{
+  font-family:var(--display); font-weight:800; font-size:19px; letter-spacing:.5px; color:#fff;
+}
+.brand-text{min-width:0}
+.brand-text b{
+  font-family:var(--display); font-weight:800; font-size:17px; line-height:1.15;
+  display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.brand-text span{font-size:12.5px; color:var(--muted)}
+.bar .spacer{flex:1}
+.icon-btn{
+  position:relative; background:transparent; border:1px solid var(--line);
+  width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+  cursor:pointer; transition:background .15s ease, border-color .15s ease;
+}
+.icon-btn:hover{background:var(--mist)}
+.icon-btn svg{width:21px; height:21px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round}
+.cart-count{
+  position:absolute; top:-7px; right:-7px; min-width:21px; height:21px; padding:0 5px;
+  border-radius:99px; background:var(--brass); color:#fff; font-size:12px; font-weight:700;
+  display:grid; place-items:center; transform:scale(0); transition:transform .18s ease;
+}
+.cart-count.on{transform:scale(1)}
+
+/* ============================ HERO ============================ */
+.hero{border-bottom:1px solid var(--line); background:var(--mist)}
+.hero-in{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center; padding:54px 0}
+.hero h1{
+  font-family:var(--display); font-weight:800; font-size:clamp(2.1rem,5.2vw,3.4rem);
+  line-height:1.04; margin:0 0 14px; letter-spacing:-.02em; max-width:15ch;
+}
+.hero p{margin:0 0 22px; max-width:52ch; color:var(--muted); font-size:1.05rem}
+.hero-cta{display:flex; flex-wrap:wrap; gap:10px}
+.btn{
+  border:1px solid transparent; border-radius:12px; padding:12px 20px; cursor:pointer;
+  font-weight:700; font-size:.95rem; text-decoration:none; display:inline-flex;
+  align-items:center; gap:8px; transition:transform .12s ease, opacity .15s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--pine); color:#fff}
+:root[data-theme="dark"] .btn-primary, :root:not([data-theme="light"]) .btn-primary{color:#17171B}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .btn-primary{color:#fff}}
+.btn-ghost{background:transparent; border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface)}
+.stats{display:flex; gap:26px; margin-top:26px; flex-wrap:wrap}
+.stats div b{font-family:var(--display); font-size:1.3rem; display:block}
+.stats div span{font-size:.82rem; color:var(--muted)}
+
+/* Hero image slot */
+.hero-slot{
+  aspect-ratio:4/3.4; border-radius:var(--radius); overflow:hidden;
+  background:var(--surface); border:1px dashed var(--line); display:grid; place-items:center;
+}
+.hero-slot img{width:100%; height:100%; object-fit:cover}
+.slot-hint{padding:18px; text-align:center; color:var(--muted); font-size:.86rem; line-height:1.5}
+.slot-hint code{background:var(--mist); padding:2px 6px; border-radius:6px; font-size:.82em}
+
+/* ============================ TOOLBAR ============================ */
+.toolbar{position:sticky; top:69px; z-index:30; background:var(--bg); border-bottom:1px solid var(--line); padding:14px 0}
+.tools{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.search{position:relative; flex:1 1 240px; min-width:0}
+.search input{
+  width:100%; padding:11px 14px 11px 40px; border-radius:12px;
+  border:1px solid var(--line); background:var(--card);
+}
+.search svg{position:absolute; left:13px; top:50%; transform:translateY(-50%); width:18px; height:18px;
+  stroke:var(--muted); fill:none; stroke-width:1.8}
+select.sort{padding:11px 14px; border-radius:12px; border:1px solid var(--line); background:var(--card); cursor:pointer}
+.chips{display:flex; gap:8px; overflow-x:auto; padding:12px 0 2px; scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  white-space:nowrap; padding:8px 15px; border-radius:99px; border:1px solid var(--line);
+  background:var(--card); cursor:pointer; font-size:.9rem; font-weight:600;
+}
+.chip[aria-pressed="true"]{background:var(--pine); border-color:var(--pine); color:#fff}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#17171B}
+
+/* ============================ GRID ============================ */
+main{padding:28px 0 70px}
+.count{color:var(--muted); font-size:.9rem; margin:4px 0 18px}
+.grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:20px}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow);
+}
+.thumb{position:relative; aspect-ratio:1/1; background:var(--mist); overflow:hidden; cursor:pointer; border:0; padding:0; width:100%}
+.thumb img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease}
+.card:hover .thumb img{transform:scale(1.04)}
+.thumb .placeholder{
+  width:100%; height:100%; display:grid; place-items:center; text-align:center;
+  padding:16px; color:var(--muted); font-size:.8rem; line-height:1.45;
+}
+.badge{
+  position:absolute; top:10px; left:10px; background:var(--brass); color:#fff;
+  font-size:.72rem; font-weight:700; padding:5px 10px; border-radius:99px;
+}
+.out{position:absolute; inset:0; background:rgba(15,26,23,.55); color:#fff; display:grid; place-items:center; font-weight:700}
+.card-body{padding:15px 16px 17px; display:flex; flex-direction:column; gap:7px; flex:1}
+.cat{font-size:.74rem; color:var(--muted); letter-spacing:.04em}
+.card h3{font-family:var(--display); font-size:1.02rem; margin:0; font-weight:700; line-height:1.25}
+.desc{font-size:.87rem; color:var(--muted); margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.price-row{display:flex; align-items:baseline; gap:8px; margin-top:auto; padding-top:8px}
+.price{font-family:var(--display); font-weight:700; font-size:1.12rem}
+.was{font-size:.85rem; color:var(--muted); text-decoration:line-through}
+.card-actions{display:flex; gap:8px}
+.card-actions .btn{flex:1; justify-content:center; padding:10px 12px; font-size:.88rem}
+.empty{text-align:center; padding:60px 20px; color:var(--muted)}
+
+/* ============================ MODAL ============================ */
+.backdrop{
+  position:fixed; inset:0; background:rgba(9,18,15,.55); opacity:0; pointer-events:none;
+  transition:opacity .2s ease; z-index:50;
+}
+.backdrop.on{opacity:1; pointer-events:auto}
+.modal{
+  position:fixed; z-index:60; inset:auto 0 0 0; margin:auto; background:var(--card);
+  border-radius:18px 18px 0 0; max-height:92vh; overflow-y:auto; transform:translateY(100%);
+  transition:transform .28s cubic-bezier(.2,.8,.25,1);
+  pointer-events:none;
+}
+.modal.on{transform:translateY(0); pointer-events:auto}
+@media (min-width:760px){
+  .modal{inset:0; max-width:880px; height:max-content; max-height:88vh; border-radius:18px; transform:translateY(24px) scale(.98); opacity:0}
+  .modal.on{transform:none; opacity:1}
+}
+.modal-in{display:grid; grid-template-columns:1fr; gap:0}
+@media (min-width:760px){.modal-in{grid-template-columns:1fr 1fr}}
+.modal-img{background:var(--mist); aspect-ratio:1/1}
+.modal-img img{width:100%; height:100%; object-fit:cover}
+.modal-body{padding:22px 22px 26px; display:flex; flex-direction:column; gap:12px}
+.modal-body h2{font-family:var(--display); margin:0; font-size:1.5rem; line-height:1.2}
+.opt-label{font-size:.82rem; font-weight:700; margin-bottom:6px}
+.opts{display:flex; flex-wrap:wrap; gap:8px}
+.opt{padding:8px 14px; border:1px solid var(--line); border-radius:10px; background:transparent; cursor:pointer; font-size:.88rem}
+.opt[aria-pressed="true"]{border-color:var(--pine); background:var(--pine); color:#fff}
+:root[data-theme="dark"] .opt[aria-pressed="true"]{color:#17171B}
+.qty{display:flex; align-items:center; gap:0; border:1px solid var(--line); border-radius:10px; width:max-content; overflow:hidden}
+.qty button{width:40px; height:40px; background:transparent; border:0; cursor:pointer; font-size:1.2rem}
+.qty button:hover{background:var(--mist)}
+.qty span{min-width:42px; text-align:center; font-weight:700}
+.close-x{position:absolute; top:12px; right:12px; z-index:2; background:var(--card); border:1px solid var(--line);
+  width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1}
+
+/* ============================ CART DRAWER ============================ */
+.drawer{
+  position:fixed; top:0; right:0; bottom:0; width:min(420px,100%); background:var(--card);
+  z-index:60; transform:translateX(100%); transition:transform .3s cubic-bezier(.2,.8,.25,1);
+  display:flex; flex-direction:column; border-left:1px solid var(--line);
+  pointer-events:none;
+}
+.drawer.on{transform:none; pointer-events:auto}
+.drawer header{padding:18px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px}
+.drawer header h2{font-family:var(--display); margin:0; font-size:1.2rem; flex:1}
+.cart-items{flex:1; overflow-y:auto; padding:8px 20px}
+.line{display:grid; grid-template-columns:64px 1fr auto; gap:12px; padding:14px 0; border-bottom:1px solid var(--line)}
+.line-img{width:64px; height:64px; border-radius:10px; background:var(--mist); overflow:hidden}
+.line-img img{width:100%; height:100%; object-fit:cover}
+.line b{font-size:.93rem; font-family:var(--display)}
+.line small{color:var(--muted); display:block; font-size:.8rem}
+.line .qty{margin-top:8px; transform:scale(.85); transform-origin:left}
+.line-right{text-align:right; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-end}
+.rm{background:none; border:0; color:var(--danger); cursor:pointer; font-size:.8rem; padding:2px 0}
+.drawer footer{padding:18px 20px; border-top:1px solid var(--line); display:grid; gap:12px}
+.totals{display:flex; justify-content:space-between; font-family:var(--display); font-size:1.2rem; font-weight:700}
+.note{font-size:.8rem; color:var(--muted)}
+.drawer footer .btn{justify-content:center}
+
+/* ============================ FOOTER / TOAST ============================ */
+footer.site{border-top:1px solid var(--line); background:var(--mist); padding:44px 0 34px}
+.foot{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:26px}
+.foot h4{font-family:var(--display); margin:0 0 8px; font-size:1rem}
+.foot p, .foot a{color:var(--muted); font-size:.9rem; margin:4px 0; text-decoration:none; display:block}
+.foot a:hover{color:var(--fg)}
+.copy{margin-top:30px; padding-top:18px; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted)}
+.toast{
+  position:fixed; left:50%; bottom:24px; transform:translate(-50%,120%); z-index:80;
+  background:var(--pine-deep); color:#fff; padding:13px 20px; border-radius:12px;
+  font-size:.9rem; font-weight:600; transition:transform .25s ease; max-width:90vw;
+}
+:root[data-theme="dark"] .toast{background:var(--pine); color:#17171B}
+.toast.on{transform:translate(-50%,0)}
+
+/* ================= MOVING WORDS + SCROLL REVEALS ================= */
+:root[data-theme="dark"] .badge, :root[data-theme="dark"] .cart-count{color:#17171B}
+
+/* hero headline: each word arrives on its own, then reacts to touch/hover */
+.w{display:inline-block; opacity:0; transform:translateY(.5em) rotate(1.5deg);
+   animation:wordIn .55s cubic-bezier(.2,.85,.3,1) forwards; cursor:default;
+   transition:color .18s ease, transform .18s ease}
+.w:hover{color:var(--pine); transform:translateY(-3px) !important}
+@keyframes wordIn{to{opacity:1; transform:none}}
+
+/* words further down the page wait until you scroll to them */
+.reveal .w{animation-play-state:paused}
+.reveal.seen .w{animation-play-state:running}
+.rise{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.85,.3,1)}
+.rise.seen{opacity:1; transform:none}
+
+/* the word that changes itself */
+.rotator{display:inline-grid; vertical-align:bottom; color:var(--pine); font-weight:700}
+.rotator > span{grid-area:1/1; opacity:0; transform:translateY(.45em); transition:opacity .35s ease, transform .35s ease}
+.rotator > span.on{opacity:1; transform:none}
+
+/* ================= HOW IT WORKS ================= */
+.steps{border-top:1px solid var(--line); background:var(--mist); padding:56px 0}
+.steps h2{font-family:var(--display); font-size:clamp(1.6rem,3.6vw,2.3rem); margin:0 0 6px; line-height:1.12; max-width:18ch}
+.steps .lede{color:var(--muted); max-width:56ch; margin:0 0 30px}
+.step-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; counter-reset:s}
+.step{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+.step::before{counter-increment:s; content:counter(s); font-family:var(--display); font-weight:800;
+  font-size:1.5rem; color:var(--pine); display:block; margin-bottom:6px}
+.step h3{font-family:var(--display); margin:0 0 6px; font-size:1.05rem}
+.step p{margin:0; color:var(--muted); font-size:.92rem}
+.pull{border-left:3px solid var(--pine); padding:4px 0 4px 18px; margin:34px 0 0;
+  font-family:var(--display); font-size:clamp(1.1rem,2.4vw,1.45rem); line-height:1.35; max-width:34ch}
+.pull cite{display:block; font-family:var(--body); font-size:.85rem; color:var(--muted); font-style:normal; margin-top:8px}
+
+@media (max-width:760px){
+  .hero-in{grid-template-columns:1fr; padding:34px 0; gap:24px}
+  .hero-slot{order:-1; aspect-ratio:16/11}
+  .toolbar{top:69px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px}
+  .card-body{padding:12px 13px 14px}
+  .brand-text span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER — YOUR LOGO GOES HERE
+     Replace  images/logo.png  with your own file (or a full URL).
+     If the file is missing, the letters "CFM" show instead.
+     ================================================================ -->
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <span class="logo-box">
+        <img id="logo"
+             src="cfm.jpg"
+             alt="Christian Fellowship Makerere logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="fallback" style="display:none">CFM</span>
+      </span>
+      <span class="brand-text">
+        <b>Christian Fellowship Makerere</b>
+        <span>Medical wear &amp; equipment</span>
+      </span>
+    </a>
+    <span class="spacer"></span>
+
+    <button class="icon-btn" id="themeBtn" aria-label="Switch between light and dark">
+      <svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+
+    <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ================================================================
+     HERO — the big picture slot. Replace images/hero.jpg
+     ================================================================ -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div>
+      <h1 data-words>Kitted out for the ward, before your first shift.</h1>
+      <p>Scrubs, lab coats, nurse coats and stethoscopes for
+        <span class="rotator" id="rotator" aria-label="students, midwives, clinical officers and lab technicians"></span>
+        around Makerere. Order here, pick up on campus, pay on delivery.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#shop">Browse the catalogue</a>
+        <a class="btn btn-ghost" href="#contact">Ask a question</a>
+      </div>
+      <div class="stats">
+        <div><b>Campus</b><span>Pickup at the fellowship office</span></div>
+        <div><b>Same week</b><span>Delivery within Kampala</span></div>
+        <div><b>Sizes XS–3XL</b><span>On most coats and scrubs</span></div>
+      </div>
+    </div>
+
+    <div class="hero-slot">
+      <img src="labc.jpeg" alt="Students in scrubs"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="slot-hint" style="display:none">
+        Hero picture slot<br>save your photo as <code>images/hero.jpg</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TOOLBAR ============================ -->
+<div class="toolbar" id="shop">
+  <div class="wrap">
+    <div class="tools">
+      <label class="search">
+        <span class="sr-only">Search products</span>
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="Search scrubs, coats, stethoscopes…" autocomplete="off">
+      </label>
+      <select class="sort" id="sort" aria-label="Sort products">
+        <option value="featured">Featured first</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- ================================================================
+     HOW IT WORKS — more words further down the page, they animate
+     as you scroll to them. Edit the copy freely.
+     ================================================================ -->
+<section class="steps">
+  <div class="wrap">
+    <h2 class="reveal" data-words>Three steps between your cart and your coat.</h2>
+    <p class="lede rise">No account, no card details. Everything is settled face to face.</p>
+    <div class="step-list">
+      <article class="step rise">
+        <h3>Pick your size</h3>
+        <p>Open any item to choose size and colour. Not sure? Come by the office and try one on first.</p>
+      </article>
+      <article class="step rise">
+        <h3>Send the order</h3>
+        <p>The cart writes the whole list into a WhatsApp message for you. Add your name and hit send.</p>
+      </article>
+      <article class="step rise">
+        <h3>Collect and pay</h3>
+        <p>Pick it up at the fellowship office, or we deliver within Kampala. You pay when it is in your hands.</p>
+      </article>
+    </div>
+    <blockquote class="pull reveal" data-words>
+      Every coat sold keeps the fellowship's community work running.
+      <cite>Christian Fellowship Makerere</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site" id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>Christian Fellowship Makerere</h4>
+        <p>A shop kitting out the medical school and the community around it.</p>
+      </div>
+      <div>
+        <h4>Visit us</h4>
+        <p>Fellowship office, Makerere</p>
+        <p>Mon–Sun, 7:00–18:00</p>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <!-- Put your real number and email here -->
+        <a href="tel:+256706042981">+256 706 042 981</a>
+        <a href="mailto:hello@gmail.com">hello@gmail.com</a>
+      </div>
+      <div>
+        <h4>How it works</h4>
+        <p>Add items to your cart, send the order on WhatsApp, then pay on pickup or delivery.</p>
+      </div>
+    </div>
+    <p class="copy">© <span id="year"></span> Christian Fellowship Makerere.</p>
+  </div>
+</footer>
+
+<div class="backdrop" id="backdrop"></div>
+
+<!-- ============================ QUICK VIEW ============================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <button class="close-x" id="modalClose" aria-label="Close">✕</button>
+  <div class="modal-in">
+    <div class="modal-img" id="mImg"></div>
+    <div class="modal-body">
+      <p class="cat" id="mCat"></p>
+      <h2 id="mTitle"></h2>
+      <p class="price" id="mPrice"></p>
+      <p id="mDesc" style="color:var(--muted); font-size:.93rem; margin:0"></p>
+      <div id="mSizes"></div>
+      <div id="mColors"></div>
+      <ul id="mSpecs" style="margin:4px 0 0; padding-left:18px; font-size:.88rem; color:var(--muted)"></ul>
+      <div>
+        <p class="opt-label">Quantity</p>
+        <div class="qty">
+          <button id="mMinus" aria-label="Reduce quantity">−</button>
+          <span id="mQty">1</span>
+          <button id="mPlus" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="mAdd" style="justify-content:center; margin-top:4px">Add to cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ CART ============================ -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Your cart">
+  <header>
+    <h2>Your cart</h2>
+    <button class="icon-btn" id="drawerClose" aria-label="Close cart">✕</button>
+  </header>
+  <div class="cart-items" id="cartItems"></div>
+  <footer>
+    <div class="totals"><span>Total</span><span id="total">UGX 0</span></div>
+    <p class="note">Delivery within Kampala is arranged after you send the order. Payment on pickup or delivery.</p>
+    <button class="btn btn-primary" id="checkout">Send order on WhatsApp</button>
+    <button class="btn btn-ghost" id="copyOrder" style="justify-content:center">Copy order as text</button>
+  </footer>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   2. YOUR SHOP — EDIT EVERYTHING IN THIS BLOCK
+   ---------------------------------------------------------------------
+   IMAGES: create a folder called "images" next to this file and drop your
+   photos in it, then point each "image" below at the file name.
+   A product with no image simply shows a labelled empty slot, so the page
+   never looks broken while you are still taking photos.
+   ===================================================================== */
+
+const SHOP = {
+  whatsapp: "256706042981",     // <- your WhatsApp number, digits only, country code first
+  currency: "UGX"
+};
+
+const CATEGORIES = ["All", "Scrubs", "Lab coats", "Nurse coats", "Stethoscopes", "Accessories"];
+
+const PRODUCTS = [
+  {
+    id: "scrub-set",
+    name: "Timberland scrub set",
+    category: "Scrubs",
+    price: 60000,            // numbers only — no commas, no "UGX"
+    badge: "Best seller",    // small tag on the photo, or delete this line
+    image: "scrubs.jpeg"                                                                                                  ,
+    desc: "Top and trousers in a breathable poly-cotton blend that survives a full week of ward rounds.",
+    specs: ["Four pockets", "Drawstring waist", "Machine washable at 40°"],
+    sizes: ["XS","S","M","L","XL","2XL","3XL"],
+    colors: ["Navy","Ceil blue","Wine","Teal"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "lab-coat",
+    name: "Timberland lab coat",
+    category: "Lab coats",
+    price: 50000,
+    image: "timberlandlabc.jpeg",
+    desc: "Knee-length white coat with a notched collar that holds its shape after pressing.",
+    specs: ["Three pockets", "Cotton drill", "Embroidery on request"],
+    sizes: ["S","M","L","XL","2XL"],
+    colors: ["White"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "nurse-coat",
+    name: "Timberland nurse coat",
+    category: "Nurse coats",
+    price: 50000,
+    image: "nurselabc.jpeg",
+    desc: "Tailored nurse coat cut slightly shorter for movement, with a soft finish on the inside seams.",
+    specs: ["Two hip pockets", "Button front", "Fade resistant"],
+    sizes: ["XS","S","M","L","XL","2XL"],
+    colors: ["White","Powder blue"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "steth-dual",
+    name: "Dual-head stethoscope",
+    category: "Stethoscopes",
+    price: 150000,
+    badge: "New",
+    image: "stethoscope-iii.jpeg",
+    desc: "Bell and diaphragm in one chestpiece, with soft ear tips and a spare pair in the box.",
+    specs: ["Stainless chestpiece", "Latex-free tubing", "One year warranty"],
+    sizes: [],
+    colors: ["Black","Navy","Burgundy","Rose gold"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "steth-cardio",
+    name: "Cardiology stethoscope",
+    category: "Stethoscopes",
+    price: 250000,
+    badge: "New",
+    image: "cardiology.jpeg",
+    desc: "For picking up the quiet sounds — tuned for low and high frequencies without swapping the head.",
+    specs: ["Dual-lumen tubing", "Adjustable ear tips", "Engraving on request"],
+    sizes: [],
+    colors: ["Black","Smoke", "Orange"],
+    inStock: true
+  },
+  {
+    id: "name-tag",
+    name: "Name embroidery",
+    category: "Accessories",
+    price: 10000,
+    image: "embroidery.jpg",
+    desc: "Your name and course stitched onto any coat or scrub top. Add it alongside the garment.",
+    specs: ["Up to 25 characters", "Ready in three days"],
+    sizes: [],
+    colors: [],
+    inStock: true
+  },
+  {
+    id: "steth-student",
+    name: "Student stethoscope",
+    category: "Stethoscopes",
+    price: 150000,
+    image: "student-stethoscope.jpeg",
+    desc: "A light, honest starter scope for first and second years. Clear enough for practicals.",
+    specs: ["Single head", "Aluminium chestpiece"],
+    sizes: [],
+    colors: ["Black","Purple","Green", "Blue", "Orange"],
+    inStock: true   // doesnt show a "Sold out" overlay
+  }
+];
+
+/* =====================================================================
+   3. ENGINE — you don't need to change anything below this line
+   ===================================================================== */
+
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const money = n => SHOP.currency + " " + Number(n).toLocaleString("en-US");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+let cart = [];
+let state = { cat:"All", q:"", sort:"featured" };
+let current = null, curQty = 1, curSize = null, curColor = null;
+
+/* ---- storage (safe if the browser blocks it) ---- */
+function saveCart(){ try{ localStorage.setItem("cfm-cart", JSON.stringify(cart)); }catch(e){} }
+function loadCart(){
+  try{
+    const raw = localStorage.getItem("cfm-cart");
+    if(raw) cart = JSON.parse(raw) || [];
+  }catch(e){ cart = []; }
+  if(!Array.isArray(cart)) cart = [];
+}
+
+/* ---- theme ---- */
+function initTheme(){
+  let saved = null;
+  try{ saved = localStorage.getItem("cfm-theme"); }catch(e){}
+  if(saved) document.documentElement.setAttribute("data-theme", saved);
+}
+$("#themeBtn").addEventListener("click", () => {
+  const now = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", now);
+  try{ localStorage.setItem("cfm-theme", now); }catch(e){}
+});
+
+/* ---- toast ---- */
+let toastTimer;
+function toast(msg){
+  const t = $("#toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("on"), 2200);
+}
+
+/* ---- image helper: real photo, or a labelled empty slot ---- */
+function imgHTML(p, cls=""){
+  if(!p.image) return `<div class="placeholder">Photo slot<br>${esc(p.name)}</div>`;
+  return `<img class="${cls}" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"
+    onerror="this.outerHTML='<div class=\\'placeholder\\'>Add <b>${esc(p.image)}</b><br>to the images folder</div>'">`;
+}
+
+/* ---- filters ---- */
+function visible(){
+  let list = PRODUCTS.filter(p => {
+    const inCat = state.cat === "All" || p.category === state.cat;
+    const q = state.q.trim().toLowerCase();
+    const inQ = !q || (p.name + " " + p.desc + " " + p.category).toLowerCase().includes(q);
+    return inCat && inQ;
+  });
+  if(state.sort === "low")  list.sort((a,b) => a.price - b.price);
+  if(state.sort === "high") list.sort((a,b) => b.price - a.price);
+  if(state.sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+  if(state.sort === "featured") list.sort((a,b) => (b.featured?1:0) - (a.featured?1:0));
+  return list;
+}
+
+function renderChips(){
+  $("#chips").innerHTML = CATEGORIES.map(c =>
+    `<button class="chip" data-cat="${esc(c)}" aria-pressed="${c===state.cat}">${esc(c)}</button>`
+  ).join("");
+}
+
+function renderGrid(){
+  const list = visible();
+  $("#count").textContent = list.length
+    ? `${list.length} item${list.length>1?"s":""}${state.cat!=="All" ? " in " + state.cat.toLowerCase() : ""}`
+    : "";
+  $("#grid").innerHTML = list.length ? list.map(p => `
+    <article class="card rise">
+      <button class="thumb" data-open="${esc(p.id)}" aria-label="View ${esc(p.name)}">
+        ${imgHTML(p)}
+        ${p.badge && p.inStock ? `<span class="badge">${esc(p.badge)}</span>` : ""}
+        ${!p.inStock ? `<span class="out">Sold out</span>` : ""}
+      </button>
+      <div class="card-body">
+        <p class="cat">${esc(p.category)}</p>
+        <h3>${esc(p.name)}</h3>
+        <p class="desc">${esc(p.desc)}</p>
+        <div class="price-row">
+          <span class="price">${money(p.price)}</span>
+          ${p.was ? `<span class="was">${money(p.was)}</span>` : ""}
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-ghost" data-open="${esc(p.id)}">Details</button>
+          <button class="btn btn-primary" data-quick="${esc(p.id)}" ${p.inStock?"":"disabled style=opacity:.45"}>Add</button>
+        </div>
+      </div>
+    </article>`).join("")
+    : `<p class="empty">Nothing matches that search yet. Try a different word, or browse all items.</p>`;
+  watch();
+}
+
+/* ---- quick view ---- */
+function openModal(id){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return;
+  current = p; curQty = 1;
+  curSize  = p.sizes  && p.sizes.length  ? p.sizes[0]  : null;
+  curColor = p.colors && p.colors.length ? p.colors[0] : null;
+
+  $("#mImg").innerHTML = imgHTML(p);
+  $("#mCat").textContent = p.category;
+  $("#mTitle").textContent = p.name;
+  $("#mPrice").innerHTML = money(p.price) + (p.was ? ` <span class="was">${money(p.was)}</span>` : "");
+  $("#mDesc").textContent = p.desc;
+  $("#mQty").textContent = 1;
+  $("#mSpecs").innerHTML = (p.specs||[]).map(s => `<li>${esc(s)}</li>`).join("");
+
+  $("#mSizes").innerHTML = (p.sizes && p.sizes.length)
+    ? `<p class="opt-label">Size</p><div class="opts">${p.sizes.map(s =>
+        `<button class="opt" data-size="${esc(s)}" aria-pressed="${s===curSize}">${esc(s)}</button>`).join("")}</div>` : "";
+  $("#mColors").innerHTML = (p.colors && p.colors.length)
+    ? `<p class="opt-label">Colour</p><div class="opts">${p.colors.map(c =>
+        `<button class="opt" data-color="${esc(c)}" aria-pressed="${c===curColor}">${esc(c)}</button>`).join("")}</div>` : "";
+
+  const add = $("#mAdd");
+  add.disabled = !p.inStock;
+  add.textContent = p.inStock ? "Add to cart" : "Sold out";
+  add.style.opacity = p.inStock ? 1 : .45;
+
+  $("#modal").classList.add("on");
+  $("#backdrop").classList.add("on");
+  document.body.style.overflow = "hidden";
+  $("#modalClose").focus();
+}
+
+function closeAll(){
+  $("#modal").classList.remove("on");
+  $("#drawer").classList.remove("on");
+  $("#backdrop").classList.remove("on");
+  document.body.style.overflow = "";
+}
+
+/* ---- cart ---- */
+function addToCart(p, qty=1, size=null, color=null){
+  if(!p.inStock) return;
+  const key = [p.id, size, color].join("|");
+  const found = cart.find(l => l.key === key);
+  if(found) found.qty += qty;
+  else cart.push({ key, id:p.id, name:p.name, price:p.price, image:p.image||"", size, color, qty });
+  saveCart(); renderCart();
+  toast(`${p.name} added to your cart`);
+}
+
+function renderCart(){
+  const n = cart.reduce((s,l) => s + l.qty, 0);
+  const badge = $("#cartCount");
+  badge.textContent = n;
+  badge.classList.toggle("on", n > 0);
+
+  $("#cartItems").innerHTML = cart.length ? cart.map(l => `
+    <div class="line">
+      <div class="line-img">${l.image ? `<img src="${esc(l.image)}" alt="" onerror="this.remove()">` : ""}</div>
+      <div>
+        <b>${esc(l.name)}</b>
+        <small>${[l.size, l.color].filter(Boolean).map(esc).join(" · ") || "&nbsp;"}</small>
+        <div class="qty">
+          <button data-dec="${esc(l.key)}" aria-label="Reduce quantity">−</button>
+          <span>${l.qty}</span>
+          <button data-inc="${esc(l.key)}" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <div class="line-right">
+        <b>${money(l.price * l.qty)}</b>
+        <button class="rm" data-rm="${esc(l.key)}">Remove</button>
+      </div>
+    </div>`).join("")
+    : `<p class="empty">Your cart is empty. Add a coat, a set of scrubs or a stethoscope to get started.</p>`;
+
+  $("#total").textContent = money(cart.reduce((s,l) => s + l.price * l.qty, 0));
+}
+
+function orderText(){
+  const lines = cart.map(l =>
+    `• ${l.qty} × ${l.name}${[l.size,l.color].filter(Boolean).length ? " (" + [l.size,l.color].filter(Boolean).join(", ") + ")" : ""} — ${money(l.price*l.qty)}`
+  );
+  const total = money(cart.reduce((s,l) => s + l.price*l.qty, 0));
+  return `Hello Christian Fellowship Makerere, I would like to order:\n\n${lines.join("\n")}\n\nTotal: ${total}\n\nMy name: \nPickup or delivery: `;
+}
+
+/* ---- events ---- */
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-open],[data-quick],[data-cat],[data-size],[data-color],[data-inc],[data-dec],[data-rm]");
+  if(!t) return;
+
+  if(t.dataset.open)  openModal(t.dataset.open);
+  if(t.dataset.quick){
+    const p = PRODUCTS.find(x => x.id === t.dataset.quick);
+    if(p && ((p.sizes||[]).length || (p.colors||[]).length)) openModal(p.id);
+    else if(p) addToCart(p);
+  }
+  if(t.dataset.cat){ state.cat = t.dataset.cat; renderChips(); renderGrid(); }
+  if(t.dataset.size){ curSize = t.dataset.size; $$("#mSizes .opt").forEach(b => b.setAttribute("aria-pressed", b.dataset.size===curSize)); }
+  if(t.dataset.color){ curColor = t.dataset.color; $$("#mColors .opt").forEach(b => b.setAttribute("aria-pressed", b.dataset.color===curColor)); }
+
+  if(t.dataset.inc || t.dataset.dec || t.dataset.rm){
+    const key = t.dataset.inc || t.dataset.dec || t.dataset.rm;
+    const line = cart.find(l => l.key === key);
+    if(!line) return;
+    if(t.dataset.inc) line.qty++;
+    if(t.dataset.dec) line.qty--;
+    if(t.dataset.rm)  line.qty = 0;
+    if(line.qty <= 0) cart = cart.filter(l => l.key !== key);
+    saveCart(); renderCart();
+  }
+});
+
+$("#search").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
+$("#sort").addEventListener("change", e => { state.sort = e.target.value; renderGrid(); });
+
+$("#mPlus").addEventListener("click",  () => { curQty++; $("#mQty").textContent = curQty; });
+$("#mMinus").addEventListener("click", () => { if(curQty>1){ curQty--; $("#mQty").textContent = curQty; } });
+$("#mAdd").addEventListener("click", () => {
+  if(!current) return;
+  addToCart(current, curQty, curSize, curColor);
+  closeAll();
+});
+
+$("#cartBtn").addEventListener("click", () => {
+  $("#drawer").classList.add("on");
+  $("#backdrop").classList.add("on");
+  document.body.style.overflow = "hidden";
+  $("#drawerClose").focus();
+});
+$("#drawerClose").addEventListener("click", closeAll);
+$("#modalClose").addEventListener("click", closeAll);
+$("#backdrop").addEventListener("click", closeAll);
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeAll(); });
+
+$("#checkout").addEventListener("click", () => {
+  if(!cart.length){ toast("Add something to your cart first"); return; }
+  window.open(`https://wa.me/${SHOP.whatsapp}?text=${encodeURIComponent(orderText())}`, "_blank");
+});
+$("#copyOrder").addEventListener("click", async () => {
+  if(!cart.length){ toast("Add something to your cart first"); return; }
+  try{
+    await navigator.clipboard.writeText(orderText());
+    toast("Order copied. Paste it anywhere.");
+  }catch(e){
+    toast("Copying is blocked here — screenshot the cart instead");
+  }
+});
+
+/* ---- moving words ---- */
+const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function splitWords(el){
+  if(el.dataset.split) return;
+  el.dataset.split = "1";
+  let i = 0;
+  Array.from(el.childNodes).forEach(node => {
+    if(node.nodeType !== 3 || !node.textContent.trim()) return;
+    const frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(part => {
+      if(!part.trim()){ frag.appendChild(document.createTextNode(part)); return; }
+      const s = document.createElement("span");
+      s.className = "w";
+      s.textContent = part;
+      s.style.animationDelay = (i++ * 45) + "ms";
+      frag.appendChild(s);
+    });
+    el.replaceChild(frag, node);
+  });
+}
+
+const seer = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if(!en.isIntersecting) return;
+    en.target.classList.add("seen");
+    seer.unobserve(en.target);
+  });
+}, { threshold:.18, rootMargin:"0px 0px -8% 0px" });
+
+function watch(){
+  $$(".reveal, .rise").forEach((el, i) => {
+    if(still){ el.classList.add("seen"); return; }
+    if(el.classList.contains("rise")) el.style.transitionDelay = ((i % 4) * 70) + "ms";
+    if(!el.dataset.watched){ el.dataset.watched = "1"; seer.observe(el); }
+  });
+}
+
+/* the word that keeps changing */
+const ROTATING = ["nursing students", "midwives", "clinical officers", "lab technicians"];
+function startRotator(){
+  const host = $("#rotator");
+  if(!host) return;
+  host.innerHTML = ROTATING.map((w,i) => `<span class="${i===0?"on":""}">${esc(w)}</span>`).join("");
+  if(still) return;
+  const spans = $$("span", host);
+  let i = 0;
+  setInterval(() => {
+    spans[i].classList.remove("on");
+    i = (i + 1) % spans.length;
+    spans[i].classList.add("on");
+  }, 2600);
+}
+
+/* ---- start ---- */
+initTheme();
+loadCart();
+renderChips();
+renderGrid();
+renderCart();
+$("#year").textContent = new Date().getFullYear();
+
+$$("[data-words]").forEach(splitWords);
+if(still) $$(".w").forEach(w => w.style.opacity = 1);
+startRotator();
+watch();
+</script>
+</body>
+</html>
