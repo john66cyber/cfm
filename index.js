@@ -105,20 +105,6 @@ const PRODUCTS = [
     sizes: [],
     colors: ["Black","Purple","Green", "Blue", "Orange"],
     inStock: true   // doesnt show a "Sold out" overlay
-  },
-   {
-    id: "crocks-set",
-    name: "ward crocks",
-    category: "Crocks",
-    price: 40000,            
-    badge: "Brand new",    
-    image: "AF6A0380.JPG.jpeg"                                                                                                  ,
-    desc: "Cmfortable and easy to clean crocks for ward rounds, in a variety of colours",
-    specs: [],
-    sizes: [],
-    colors: ["Navy Blue","Ceil blue","Teal","Cream"],
-    inStock: true,
-    featured: true,
   }
 ];
 
