@@ -112,7 +112,7 @@ const PRODUCTS = [
     category: "Crocks",
     price: 40000,            
     badge: "Brand new",    
-    image: "crocks.jpeg"                                                                                                  ,
+    image: "AF6A0380.JPG.jpeg"                                                                                                  ,
     desc: "Cmfortable and easy to clean crocks for ward rounds, in a variety of colours",
     specs: [],
     sizes: [],
