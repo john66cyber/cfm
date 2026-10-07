@@ -1,18 +1,13 @@
 /* =====================================================================
-   2. YOUR SHOP — EDIT EVERYTHING IN THIS BLOCK
-   ---------------------------------------------------------------------
-   IMAGES: create a folder called "images" next to this file and drop your
-   photos in it, then point each "image" below at the file name.
-   A product with no image simply shows a labelled empty slot, so the page
-   never looks broken while you are still taking photos.
+    THE SHOP.
    ===================================================================== */
 
 const SHOP = {
-  whatsapp: "256706042981",     // <- your WhatsApp number, digits only, country code first
+  whatsapp: "256706042981",     
   currency: "UGX"
 };
 
-const CATEGORIES = ["All", "Scrubs", "Lab coats", "Nurse coats", "Stethoscopes", "Accessories"];
+const CATEGORIES = ["All", "Scrubs", "Lab coats", "Nurse coats", "Stethoscopes", "Accessories", "Crocks"];
 
 const PRODUCTS = [
   {
@@ -20,7 +15,7 @@ const PRODUCTS = [
     name: "Timberland scrub set",
     category: "Scrubs",
     price: 60000,            // numbers only — no commas, no "UGX"
-    badge: "Best seller",    // small tag on the photo, or delete this line
+    badge: "Best seller",    // small tag to be put on the photo
     image: "scrubs.jpeg"                                                                                                  ,
     desc: "Top and trousers in a breathable poly-cotton blend that survives a full week of ward rounds.",
     specs: ["Four pockets", "Drawstring waist", "Machine washable at 40°"],
@@ -105,11 +100,25 @@ const PRODUCTS = [
     sizes: [],
     colors: ["Black","Purple","Green", "Blue", "Orange"],
     inStock: true   // doesnt show a "Sold out" overlay
+  },
+  {
+    id: "crocks-classic",
+    name: "Classic Crocks",
+    category: "Crocks",
+    price: 40000,
+    image: "crocks.jpeg",
+    desc: "Lightweight, slip-resistant clog that's easy to wipe clean between shifts on the ward.",
+    specs: ["Water resistant", "Ventilation ports", "Easy to clean"],
+    sizes: ["38","39","40","41","42","43"],
+    colors: ["Black","Gray","Cream"],
+    inStock: true,
+    featured: false
   }
 ];
 
+
 /* =====================================================================
-   3. ENGINE — you don't need to change anything below this line
+   ENGINE 
    ===================================================================== */
 
 const $  = (s, r=document) => r.querySelector(s);
