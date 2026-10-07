@@ -1,5 +1,5 @@
 /* =====================================================================
-    THE SHOP.
+   THE SHOP.
    ===================================================================== */
 
 const SHOP = {
@@ -7,7 +7,7 @@ const SHOP = {
   currency: "UGX"
 };
 
-const CATEGORIES = ["All", "Scrubs", "Lab coats", "Nurse coats", "Stethoscopes", "Accessories", "Crocks"];
+const CATEGORIES = ["All", "Scrubs", "Lab coats", "Nurse coats", "Stethoscopes", "Embroidery", "Crocks"];
 
 const PRODUCTS = [
   {
@@ -17,10 +17,24 @@ const PRODUCTS = [
     price: 60000,            // numbers only — no commas, no "UGX"
     badge: "Best seller",    // small tag to be put on the photo
     image: "scrubs.jpeg"                                                                                                  ,
-    desc: "Top and trousers in a breathable poly-cotton blend that survives a full week of ward rounds.",
+    desc: "ELEGANT, COMFY FOR YOUR CONFIDENCE. Ready on shelf for fit in and take but also tailorable to your very specific size Very durable, highly resilient shining non-ironable material",
     specs: ["Four pockets", "Drawstring waist", "Machine washable at 40°"],
     sizes: ["XS","S","M","L","XL","2XL","3XL"],
-    colors: ["Navy","Ceil blue","Wine","Teal"],
+    colors: ["Navy blue","Royal blue","Maroon","Purple","Forest green"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "A-scrub-set",
+    name: "Timberland scrub set",
+    category: "Scrubs",
+    price: 60000,            
+    badge: "Best seller",    
+    image: "A-scrubs.jpeg"                                                                                                  ,
+    desc: "ELEGANT, COMFY FOR YOUR CONFIDENCE. Ready on shelf for fit in and take but also tailorable to your very specific size Very durable, highly resilient shining non-ironable material",
+    specs: ["Four pockets", "Drawstring waist", "Machine washable at 40°"],
+    sizes: ["XS","S","M","L","XL","2XL","3XL"],
+    colors: ["Navy blue","Royal blue","Gray","Black"],
     inStock: true,
     featured: true
   },
@@ -30,6 +44,19 @@ const PRODUCTS = [
     category: "Lab coats",
     price: 50000,
     image: "timberlandlabc.jpeg",
+    desc: "Knee-length white coat with a notched collar that holds its shape after pressing.",
+    specs: ["Three pockets", "Cotton drill", "Embroidery on request"],
+    sizes: ["S","M","L","XL","2XL"],
+    colors: ["White"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "A-lab-coat",
+    name: "Lab coat",
+    category: "Lab coats",
+    price: 50000,
+    image: "A-labcoats.jpeg",
     desc: "Knee-length white coat with a notched collar that holds its shape after pressing.",
     specs: ["Three pockets", "Cotton drill", "Embroidery on request"],
     sizes: ["S","M","L","XL","2XL"],
@@ -51,12 +78,53 @@ const PRODUCTS = [
     featured: true
   },
   {
+    id: "A-nurse-coat",
+    name: "Nurse coat",
+    category: "Nurse coats",
+    price: 50000,
+    image: "A-nursecoats.jpeg",
+    desc: "Tailored nurse coat cut slightly shorter for movement, with a soft finish on the inside seams.",
+    specs: ["Two hip pockets", "Button front", "Fade resistant"],
+    sizes: ["XS","S","M","L","XL","2XL"],
+    colors: ["White","Powder blue"],
+    inStock: true,
+    featured: true
+  },
+  {
     id: "steth-dual",
     name: "Dual-head stethoscope",
     category: "Stethoscopes",
     price: 150000,
     badge: "New",
     image: "stethoscope-iii.jpeg",
+    desc: "Bell and diaphragm in one chestpiece, with soft ear tips and a spare pair in the box.",
+    specs: ["Stainless chestpiece", "Latex-free tubing", "One year warranty"],
+    sizes: [],
+    colors: ["Black","Navy","Burgundy","Rose gold"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "A-steth-dual",
+    name: "Stethoscope",
+    category: "Stethoscopes",
+    price: 150000,
+    badge: "New",
+    image: "A-stcp.jpeg",
+    desc: "Bell and diaphragm in one chestpiece, with soft ear tips and a spare pair in the box.",
+    specs: ["Stainless chestpiece", "Latex-free tubing", "One year warranty"],
+    sizes: [],
+    colors: ["Black","Navy","Burgundy","Rose gold"],
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "B-steth-dual",
+    name: "Stethoscope",
+    category: "Stethoscopes",
+    price: 150000,
+    badge: "New",
+    image: "B-stscp.jpeg",
     desc: "Bell and diaphragm in one chestpiece, with soft ear tips and a spare pair in the box.",
     specs: ["Stainless chestpiece", "Latex-free tubing", "One year warranty"],
     sizes: [],
@@ -80,7 +148,7 @@ const PRODUCTS = [
   {
     id: "name-tag",
     name: "Name embroidery",
-    category: "Accessories",
+    category: "Embroidery",
     price: 10000,
     image: "embroidery.jpg",
     desc: "Your name and course stitched onto any coat or scrub top. Add it alongside the garment.",
@@ -94,6 +162,7 @@ const PRODUCTS = [
     name: "Student stethoscope",
     category: "Stethoscopes",
     price: 150000,
+    badge: "New",
     image: "student-stethoscope.jpeg",
     desc: "A light, honest starter scope for first and second years. Clear enough for practicals.",
     specs: ["Single head", "Aluminium chestpiece"],
@@ -106,7 +175,22 @@ const PRODUCTS = [
     name: "Classic Crocks",
     category: "Crocks",
     price: 40000,
+    badge: "New",
     image: "crocks.jpeg",
+    desc: "Lightweight, slip-resistant clog that's easy to wipe clean between shifts on the ward.",
+    specs: ["Water resistant", "Ventilation ports", "Easy to clean"],
+    sizes: ["38","39","40","41","42","43"],
+    colors: ["Black","Gray","Cream"],
+    inStock: true,
+    featured: false
+  },
+  {
+    id: "A-crocks-classic",
+    name: "Crocks",
+    category: "Crocks",
+    price: 40000,
+    badge: "New",
+    image: "A-crocks.jpeg",
     desc: "Lightweight, slip-resistant clog that's easy to wipe clean between shifts on the ward.",
     specs: ["Water resistant", "Ventilation ports", "Easy to clean"],
     sizes: ["38","39","40","41","42","43"],
